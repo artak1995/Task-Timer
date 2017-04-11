@@ -1,0 +1,66 @@
+body {
+	background-color: #6CADFF;
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	color: white;
+}
+
+input[type="text"]
+{
+    border: 0;
+    color: white;
+    border-bottom: 1px solid white;
+    outline: 0;
+    background-color: transparent;
+    width:50%; 
+    height:50px;
+    font-size: 25px;
+}
+
+.fa-clock-o {
+  color: white;
+}
+.fa-play-circle {
+  color: #FFE221;
+}
+
+#header {
+	height: 20%;
+	margin-top: 50px;
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#content {
+	height: 80%;
+	width: 100%;
+	/*margin-top: 50px;*/
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#new_task {
+     cursor: pointer
+}
+
+.white-bg {
+	background-color: white;
+}
+
+*::-webkit-input-placeholder {
+    color: white;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: white;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: white;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: white;
+}

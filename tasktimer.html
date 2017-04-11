@@ -1,0 +1,68 @@
+<html>
+<header>
+	<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			console.log("ready")
+			var i = 0;
+			var j = 0;
+    		$('#new_task').click(function(){
+    		// $('#content').toggleClass("white-bg");
+    		// get the task name from the input field
+    		var new_task = $('#input').val()
+    		// clear the input field
+    		$('#input').val('')
+
+    		$("<p><div><div>" + new_task + "</div><div id ='Timer" + i + "' data-time = '" + new Date + " ' ></div></div>").insertAfter('#new_task');
+    		i++;
+    		console.log("i: " +i);
+    		
+    		});
+    		console.log ("outside onClick")
+
+    		console.log("Number of Task: " +i);
+    		console.log("j: " +i);
+
+
+
+    		// while (j < i) {
+    				// console.log("Enter while loop")
+	    			console.log("j: " +j);
+		    		var start = new Date;
+		    		setInterval(function() {
+		    			console.log("Enter setInterval")
+		    			$('#Timer'+j ).text(Math.floor((new Date - start) / 1000, 0) + " Seconds");
+						}, 1000);
+		    		j++;
+    		// }
+
+
+
+    		$('[data-time]').each(function() {
+    			// 
+			  var $this = $(this), start = $(this).data('time');
+			  $this.time(start, setInterval(function() {
+		    			console.log("Enter setInterval")
+		    			$this.text(Math.floor((new Date - start) / 1000, 0) + " Seconds");
+						}, 1000));
+			  });
+			// });
+
+		});
+	</script>
+</header>
+
+<body>
+	<div id ="header">
+		<i class="fa fa-clock-o fa-2x" aria-hidden="true"></i> TASK TIMER
+
+	</div>
+	<div id ="content">
+		<input type="text" placeholder="Enter task name" id="input"></input> <span id='new_task'><i class="fa fa-play-circle fa-3x" aria-hidden="true"></i></span>
+	</div>
+
+
+</body>
+</html>
