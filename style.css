@@ -45,8 +45,21 @@ input[type="text"]
      cursor: pointer
 }
 
+#clickablePause {
+	cursor: pointer;
+}
+
+#clickableDone {
+	cursor: pointer;
+}
+
 .white-bg {
 	background-color: white;
+}
+
+span{
+    display:inline-block;
+    padding-right: 40px;
 }
 
 *::-webkit-input-placeholder {

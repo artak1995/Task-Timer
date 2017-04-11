@@ -6,57 +6,56 @@
 	<script>
 		$(document).ready(function(){
 			console.log("ready")
-			var i = 0;
-			// var j = 0;
+			var i = 0
     		$('#new_task').click(function(){
-    		// $('#content').toggleClass("white-bg");
-    		// get the task name from the input field
-    		var new_task = $('#input').val()
-    		// clear the input field
-    		$('#input').val('')
 
-    		$("<p><div><div>" + new_task + "</div><div data-init='false' id ='Timer" + i + "' data-time = '" + new Date + " ' ></div></div>").insertAfter('#new_task');
-    		i++;
-    		console.log("i: " +i);
+	    		// get the task name from the input field
+	    		var new_task = $('#input').val()
+	    		// clear the input field
+	    		$('#input').val('')
 
-    		$('[data-time]').each(function() {
-    			// 
-    			var $this = $(this);
-    			var start = $(this).data('time');
-    			var init = $(this).data('init')
+	    		$("<p><div><span>" + new_task + "</span><span data-done='false' id ='Timer" + i + "' data-time = '" + new Date + " ' ></span></div>").insertAfter('#new_task'); 
+	    		i++;
+	    		// create timer for each task
 
-				console.log(init);
+	    		$('[data-time]').each(function() {
+	    			var $this = $(this);
+	    			var start = $(this).data('time');
+	    			var done = $(this).data('done')
 
-    			if (init == true){
-    				// continue;
-    			}
-    			else {
+					console.log(done);
 
-					  	console.log($this)
-					  	// console.log(start);
-					  	setInterval(function() {
-			    			console.log("Enter setInterval")
-			    			var timeNow = new Date;
-			    			console.log("Time Now")
-			    			var timeNow_ = timeNow.getTime()
-			    			console.log(timeNow_)
-			    			console.log("Time Start")
-			    			var start_ = new Date(start)
-			    			console.log(start_.getTime())
-			    			var diff = timeNow_ - start_
-			    			console.log("diff")
-			    			// console.log(diff)
+	    			if (done == true){
+	    				// continue;
+	    				console.log("Entered")
+	    			}
+	    			else {
 
-			    			$this.text(Math.floor( (diff) / 1000 ) + " Seconds");
-						}, 1000);
-					  }
-    		
-    		});
+						  	console.log($this)
+						  	// console.log(start);
+						  	setInterval(function() {
+				    			console.log("Enter setInterval")
+				    			var timeNow = new Date;
+				    			console.log("Time Now")
+				    			var timeNow_ = timeNow.getTime()
+				    			console.log(timeNow_)
+				    			console.log("Time Start")
+				    			// transfer the starting time back to type Date
+				    			var start_ = new Date(start)
+				    			console.log(start_.getTime())
+				    			var diff = timeNow_ - start_
+				    			console.log("diff")
+				    			// console.log(diff)
 
-
-
-
+				    			$this.html(Math.floor( (diff) / 1000 ) + " Seconds <i id='clickablePause' class='fa fa-pause-circle-o fa-2x' aria-hidden='true'></i> <i id='clickableDone' class='fa fa-check-circle fa-2x' aria-hidden='true'></i>" );
+							}, 1000);
+						  }
+	    		
+	    		});
+			//close onClick of new task
 			});
+
+		
 
 		});
 	</script>
