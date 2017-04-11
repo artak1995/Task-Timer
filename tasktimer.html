@@ -7,7 +7,7 @@
 		$(document).ready(function(){
 			console.log("ready")
 			var i = 0;
-			var j = 0;
+			// var j = 0;
     		$('#new_task').click(function(){
     		// $('#content').toggleClass("white-bg");
     		// get the task name from the input field
@@ -15,40 +15,48 @@
     		// clear the input field
     		$('#input').val('')
 
-    		$("<p><div><div>" + new_task + "</div><div id ='Timer" + i + "' data-time = '" + new Date + " ' ></div></div>").insertAfter('#new_task');
+    		$("<p><div><div>" + new_task + "</div><div data-init='false' id ='Timer" + i + "' data-time = '" + new Date + " ' ></div></div>").insertAfter('#new_task');
     		i++;
     		console.log("i: " +i);
-    		
-    		});
-    		console.log ("outside onClick")
-
-    		console.log("Number of Task: " +i);
-    		console.log("j: " +i);
-
-
-
-    		// while (j < i) {
-    				// console.log("Enter while loop")
-	    			console.log("j: " +j);
-		    		var start = new Date;
-		    		setInterval(function() {
-		    			console.log("Enter setInterval")
-		    			$('#Timer'+j ).text(Math.floor((new Date - start) / 1000, 0) + " Seconds");
-						}, 1000);
-		    		j++;
-    		// }
-
-
 
     		$('[data-time]').each(function() {
     			// 
-			  var $this = $(this), start = $(this).data('time');
-			  $this.time(start, setInterval(function() {
-		    			console.log("Enter setInterval")
-		    			$this.text(Math.floor((new Date - start) / 1000, 0) + " Seconds");
-						}, 1000));
-			  });
-			// });
+    			var $this = $(this);
+    			var start = $(this).data('time');
+    			var init = $(this).data('init')
+
+				console.log(init);
+
+    			if (init == true){
+    				// continue;
+    			}
+    			else {
+
+					  	console.log($this)
+					  	// console.log(start);
+					  	setInterval(function() {
+			    			console.log("Enter setInterval")
+			    			var timeNow = new Date;
+			    			console.log("Time Now")
+			    			var timeNow_ = timeNow.getTime()
+			    			console.log(timeNow_)
+			    			console.log("Time Start")
+			    			var start_ = new Date(start)
+			    			console.log(start_.getTime())
+			    			var diff = timeNow_ - start_
+			    			console.log("diff")
+			    			// console.log(diff)
+
+			    			$this.text(Math.floor( (diff) / 1000 ) + " Seconds");
+						}, 1000);
+					  }
+    		
+    		});
+
+
+
+
+			});
 
 		});
 	</script>
