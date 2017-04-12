@@ -57,6 +57,17 @@ input[type="text"]
 	background-color: white;
 }
 
+.taskContainer
+{
+    text-align:center;
+}
+.taskTime, .taskStatus
+{
+    display:inline-block;
+    padding-left: 90px;
+
+}
+
 span{
     display:inline-block;
     padding-right: 40px;
