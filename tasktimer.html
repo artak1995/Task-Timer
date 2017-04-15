@@ -12,25 +12,20 @@
     			var id = 'Timer'+ i
     			var second = 0
     			var timer = null
-
 	    		// get the task name from the input field
 	    		var new_task = $('#input').val()
 	    		// clear the input field
 	    		$('#input').val('')
 
-	    		$("<p><div class ='taskContainer'> " + new_task + " <div class='taskTime' data-init='true' data-paused='false' data-done='false' id ='Timer" + i + "' data-time = '" + new Date + " '> </div> <div class='taskStatus' > <i pasued='false' id='Timer" + i +"' class='fa fa-pause-circle-o fa-2x' aria-hidden='true'></i><i id='Timer" + i + "' class='fa fa-check-circle fa-2x' aria-hidden='true'></i> </div>").insertAfter('#new_task'); 
+	    		$("<p><div class ='taskContainer' id ='" + i + "' > " + new_task + " <div class='taskTime' data-init='true' data-paused='false' data-done='false' id ='Timer" + i + "' data-time = '" + new Date + " '> </div> <div class='taskStatus' > <i pasued='false' id='Timer" + i +"' class='fa fa-pause-circle-o fa-2x' aria-hidden='true'></i><i id='Timer" + i + "' class='fa fa-check-circle fa-2x' aria-hidden='true'></i> </div>").insertAfter('#new_task'); 
 	    		i++;
 	    		// create timer for each task
 	    		var $div = $('div#'+id)
-	    		// var paused = $('div#'+id).attr('paused')
 	    		timer =  	setInterval(function() {
-					    			console.log("Enter setInterval")
+
 					    			var done = $div.data('done')
 					    			var paused = $div.data('paused')
 					    			var init = $div.data('init')
-
-					    			console.log("ID: ")
-							  		console.log(id)
 
 					    			if (done != true ) {
 					    				if (paused ==  true) {
@@ -38,28 +33,23 @@
 					    				else {
 					    					var pausedAt = $('div#'+id).text().split(' ')
 					    					if (pausedAt[0] == ''){
-					    						pausedAt[0] = 0 ;
-					    						second = parseInt(pausedAt[0]);
-					    						second = second + 1;
-					    					}
-					    					else {
-					    						second = parseInt(pausedAt[0]);
-					    						second = second + 1;
-					    					}
+					    						pausedAt[0] = 0;} 
+				    						second = parseInt(pausedAt[0]);
+				    						second = second + 1;
 					    				}
 					    				$('div#'+ id).text(second + " Seconds");}
 					    			else {
 					    					clearInterval(timer);
+					    					$('div#'+id.split('Timer')[1]).css("background-color", "#8FF379");
 					    			}
 								}, 1000);	
 
 	    		$('i#'+id).on('click', function(event){
-						// event.stopImmediatePropagation();
+
 						var id = $(this).attr('id')
 						var pausedAt = $('div#'+id).text().split(' ')
 						var paused = $('div#'+id).data('paused')
 						var timer = null;
-						// console.log(pausedAt.split(' '))
 						var startAgain = parseInt(pausedAt[0]);
 						console.log("icon on Clicked")
 						console.log($(this).attr('class'))
@@ -69,9 +59,7 @@
 						}
 						// if pasue button is clicked
 						else {
-							console.log("Paused is : " + paused);
 							if (paused == true) {
-								console.log("When Paused is true will come here")
 								$('div#'+id).data('paused', false)
 							}
 							else {
@@ -83,7 +71,6 @@
 
 			});
 			
-
 		})})
 	</script>
 </header>
